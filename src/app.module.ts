@@ -3,6 +3,5 @@ import { DevjobsModule } from './devjobs/devjobs.module';
 
 @Module({
   imports: [DevjobsModule],
-
 })
 export class AppModule {}

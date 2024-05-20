@@ -1,19 +1,18 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete ,Query} from '@nestjs/common';
+import { Controller, Get, Param, Query } from '@nestjs/common';
 import { DevjobsService } from './devjobs.service';
-import { CreateDevjobDto } from './dto/create-devjob.dto';
-import { UpdateDevjobDto } from './dto/update-devjob.dto';
+import { QueryDto } from './dto/query.dto';
 
-@Controller('devjobs')
+@Controller('/')
 export class DevjobsController {
   constructor(private readonly devjobsService: DevjobsService) {}
 
   @Get()
-  findAll(@Query() query) {
+  findAll(@Query() query: QueryDto) {
     return this.devjobsService.findAll(query);
   }
 
-  @Get(':id')
+  @Get('/:id')
   findOne(@Param('id') id: string) {
-    return this.devjobsService.findOne(+id);
+    return this.devjobsService.findOne(id);
   }
 }
